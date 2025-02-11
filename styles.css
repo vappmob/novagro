@@ -1,0 +1,628 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e6cfaf; /* Cor de fundo da página */
+    color: #572e1a; /* Cor de texto para contraste */
+    line-height: 1.6;
+}
+
+header.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #5b7a58; /* Cor do cabeçalho */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo-container img {
+    width: 120px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffffff; /* Texto branco para os links no cabeçalho */
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #2f402e; /* Cor de fundo escura para o hover */
+    color: #ffd700; /* Cor dourada no hover */
+    border-radius: 5px;
+}
+
+/* Seção Hero */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-family: var( --e-global-typography-c05b693-font-family ), Sans-serif;
+  font-size: var( --e-global-typography-c05b693-font-size );
+  font-weight: var( --e-global-typography-c05b693-font-weight );
+  text-transform: var( --e-global-typography-c05b693-text-transform );
+  font-style: var( --e-global-typography-c05b693-font-style );
+  text-decoration: var( --e-global-typography-c05b693-text-decoration );
+  line-height: var( --e-global-typography-c05b693-line-height );
+  letter-spacing: var( --e-global-typography-c05b693-letter-spacing );
+}
+
+.hero .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz o vídeo cobrir toda a área sem distorcer */
+    object-position: center center; /* Centraliza o vídeo */
+}
+
+.hero-content {
+    z-index: 10;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    background-color: #ffd700; /* Cor dourada para o botão */
+    color: #572e1a; /* Texto com a cor do rodapé */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f0b400; /* Tom mais escuro de dourado no hover */
+}
+
+/* Seção Serviços */
+.services {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #e6cfaf; /* Cor de fundo igual ao da página */
+    color: white; /* Cor de texto com o tom do cabeçalho */
+    font-family: var( --e-global-typography-c05b693-font-family ), Sans-serif;
+    font-size: var( --e-global-typography-c05b693-font-size );
+    font-weight: var( --e-global-typography-c05b693-font-weight );
+    text-transform: var( --e-global-typography-c05b693-text-transform );
+    font-style: var( --e-global-typography-c05b693-font-style );
+    text-decoration: var( --e-global-typography-c05b693-text-decoration );
+    line-height: var( --e-global-typography-c05b693-line-height );
+    letter-spacing: var( --e-global-typography-c05b693-letter-spacing );
+}
+
+.services h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color:  #5b7a58; /* Cor para o título dos serviços */
+    font-family: var( --e-global-typography-c05b693-font-family ), Sans-serif;
+
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espaçamento uniforme entre os elementos */
+}
+
+.service-card {
+    background-color:  #572e1a; /* Cards com fundo marrom */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 250px; /* Largura fixa para os cards */
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0; /* Garante que os cards não encolham */
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Efeito de sombra mais suave no hover */
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    color:  #6a8f67; /* Cor dos títulos dos serviços */
+}
+
+.service-card p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Estilo para o elemento service-dog */
+.service-dog {
+    width: 100px; /* Tamanho fixo da imagem */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* Centraliza e adiciona espaçamento */
+}
+
+
+
+.service-dog img:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Seção CTA de Agendamento */
+.cta-agendamento {
+    background-color: #41593f; /* Cor de fundo para o CTA */
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    font-family: var( --e-global-typography-c05b693-font-family ), Sans-serif;
+    font-size: var( --e-global-typography-c05b693-font-size );
+    font-weight: var( --e-global-typography-c05b693-font-weight );
+    text-transform: var( --e-global-typography-c05b693-text-transform );
+    font-style: var( --e-global-typography-c05b693-font-style );
+    text-decoration: var( --e-global-typography-c05b693-text-decoration );
+    line-height: var( --e-global-typography-c05b693-line-height );
+    letter-spacing: var( --e-global-typography-c05b693-letter-spacing );
+}
+
+.cta-agendamento h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta-agendamento p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* Seção Contato */
+.contato {
+    padding: 50px 20px;
+    background-color: #e6cfaf;
+    color: #41593f;
+    text-align: center;
+}
+
+.contato h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contato-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.contato-info {
+    flex: 1;
+    padding: 20px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.contato-map {
+    flex: 1;
+    padding: 20px;
+    max-width: 500px;
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: #41593f;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.social-icon.instagram {
+    color: #e1306c;
+}
+
+.social-icon.facebook {
+    color: #1877f2;
+}
+
+/* Rodapé */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #572e1a; /* Cor de fundo do rodapé */
+    color: #fff;
+}
+
+.footer-container img {
+    width: 100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e6cfaf; /* Cor de fundo da página */
+    color: #572e1a; /* Cor de texto para contraste */
+    line-height: 1.6;
+}
+
+header.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #5b7a58; /* Cor do cabeçalho */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo-container img {
+    width: 120px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffffff; /* Texto branco para os links no cabeçalho */
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #2f402e; /* Cor de fundo escura para o hover */
+    color: #ffd700; /* Cor dourada no hover */
+    border-radius: 5px;
+}
+
+/* Seção Hero */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-family: var( --e-global-typography-c05b693-font-family ), Sans-serif;
+  font-size: var( --e-global-typography-c05b693-font-size );
+  font-weight: var( --e-global-typography-c05b693-font-weight );
+  text-transform: var( --e-global-typography-c05b693-text-transform );
+  font-style: var( --e-global-typography-c05b693-font-style );
+  text-decoration: var( --e-global-typography-c05b693-text-decoration );
+  line-height: var( --e-global-typography-c05b693-line-height );
+  letter-spacing: var( --e-global-typography-c05b693-letter-spacing );
+}
+
+.hero .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz o vídeo cobrir toda a área sem distorcer */
+    object-position: center center; /* Centraliza o vídeo */
+}
+
+.hero-content {
+    z-index: 10;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    background-color: #ffd700; /* Cor dourada para o botão */
+    color: #572e1a; /* Texto com a cor do rodapé */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f0b400; /* Tom mais escuro de dourado no hover */
+}
+
+/* Seção Serviços */
+.services {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #e6cfaf; /* Cor de fundo igual ao da página */
+    color: white; /* Cor de texto com o tom do cabeçalho */
+    font-family: var( --e-global-typography-c05b693-font-family ), Sans-serif;
+    font-size: var( --e-global-typography-c05b693-font-size );
+    font-weight: var( --e-global-typography-c05b693-font-weight );
+    text-transform: var( --e-global-typography-c05b693-text-transform );
+    font-style: var( --e-global-typography-c05b693-font-style );
+    text-decoration: var( --e-global-typography-c05b693-text-decoration );
+    line-height: var( --e-global-typography-c05b693-line-height );
+    letter-spacing: var( --e-global-typography-c05b693-letter-spacing );
+}
+
+.services h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color:  #5b7a58; /* Cor para o título dos serviços */
+    font-family: var( --e-global-typography-c05b693-font-family ), Sans-serif;
+
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espaçamento uniforme entre os elementos */
+}
+
+.service-card {
+    background-color:  #572e1a; /* Cards com fundo marrom */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 250px; /* Largura fixa para os cards */
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0; /* Garante que os cards não encolham */
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Efeito de sombra mais suave no hover */
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    color:  #6a8f67; /* Cor dos títulos dos serviços */
+}
+
+.service-card p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Estilo para o elemento service-dog */
+.service-dog {
+    width: 100px; /* Tamanho fixo da imagem */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* Centraliza e adiciona espaçamento */
+}
+
+
+
+.service-dog img:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Seção CTA de Agendamento */
+.cta-agendamento {
+    background-color: #41593f; /* Cor de fundo para o CTA */
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    font-family: var( --e-global-typography-c05b693-font-family ), Sans-serif;
+    font-size: var( --e-global-typography-c05b693-font-size );
+    font-weight: var( --e-global-typography-c05b693-font-weight );
+    text-transform: var( --e-global-typography-c05b693-text-transform );
+    font-style: var( --e-global-typography-c05b693-font-style );
+    text-decoration: var( --e-global-typography-c05b693-text-decoration );
+    line-height: var( --e-global-typography-c05b693-line-height );
+    letter-spacing: var( --e-global-typography-c05b693-letter-spacing );
+}
+
+.cta-agendamento h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta-agendamento p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* Seção Contato */
+.contato {
+    padding: 50px 20px;
+    background-color: #e6cfaf;
+    color: #41593f;
+    text-align: center;
+}
+
+.contato h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contato-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.contato-info {
+    flex: 1;
+    padding: 20px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.contato-map {
+    flex: 1;
+    padding: 20px;
+    max-width: 500px;
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: #41593f;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.social-icon.instagram {
+    color: #e1306c;
+}
+
+.social-icon.facebook {
+    color: #1877f2;
+}
+
+/* Rodapé */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #572e1a; /* Cor de fundo do rodapé */
+    color: #fff;
+}
+
+.footer-container img {
+    width: 100px;
+}
+
+
+/* Responsividade para o vídeo e seção hero */
+@media (max-width: 1024px) {
+    #background-video {
+        width: 100%;
+        height: auto;
+    }
+    .video-background {
+        margin-top: 60px; /* Espaçamento em relação à navbar */
+    }
+    
+}
+
+@media (max-width: 768px) {
+    #background-video {
+        width: 100%;
+        height: auto;
+    }
+    .video-background {
+        margin-top: 80px; /* Espaçamento adicional para telas menores */
+    }
+
+    #dog2 {
+        width: 100%;
+        max-width: 600px; /* ou o valor que achar adequado */
+        height: auto;
+        display: block;
+        margin: 0 auto; /* centraliza as imagens */
+    }
+    #dog {
+        max-width: 400px; /* ou o valor que achar adequado */
+        height: auto;
+        margin: 0 auto; /* centraliza as imagens */
+    }
+  
+    
+}
+
+@media (max-width: 480px) {
+    #background-video {
+        width: 100%;
+        height: auto;
+    }
+    .video-background {
+        margin-top: 100px; /* Espaçamento ainda maior para telas muito pequenas */
+    }
+  
+    
+    #dog2 {
+        width: 100%;
+        max-width: 600px; /* ou o valor que achar adequado */
+        height: auto;
+        display: block;
+        margin: 0 auto; /* centraliza as imagens */
+    }
+
+}    
+
