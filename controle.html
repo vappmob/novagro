@@ -1,79 +1,59 @@
-<?php
-
-require_once 'http://novaagro.totalh.net/db_connect.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Cadastrar cliente
-    $nome = $_POST['nome'];
-    $telefone = $_POST['telefone'];
-    $email = $_POST['email'];
-    $endereco = $_POST['endereco'];
-
-    $stmt = $conn->prepare("INSERT INTO clientes (nome, telefone, email, endereco) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $nome, $telefone, $email, $endereco);
-    $stmt->execute();
-
-    $cliente_id = $stmt->insert_id;
-
-    // Inserir pedidos
-    if (!empty($_POST['servico'])) {
-        foreach ($_POST['servico'] as $key => $servico) {
-            $obs = $_POST['observacoes'][$key];
-            $stmt2 = $conn->prepare("INSERT INTO pedidos (cliente_id, servico, observacoes) VALUES (?, ?, ?)");
-            $stmt2->bind_param("iss", $cliente_id, $servico, $obs);
-            $stmt2->execute();
-        }
-    }
-
-    echo "<p>Cliente e pedidos cadastrados com sucesso!</p>";
-}
-?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro PetShop</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        input, textarea { margin-bottom: 10px; display: block; width: 300px; }
-        .pedido { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
-        button { margin-top: 10px; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Pedidos</title>
 </head>
 <body>
-<h2>Cadastro de Cliente e Pedidos</h2>
-<form method="POST">
-    <h3>Dados do Cliente</h3>
-    <input type="text" name="nome" placeholder="Nome" required>
-    <input type="text" name="telefone" placeholder="Telefone">
-    <input type="email" name="email" placeholder="Email">
-    <input type="text" name="endereco" placeholder="Endereço">
+    <h2>Cadastrar Cliente</h2>
+    <form id="formCliente">
+        <input type="text" id="nome" placeholder="Nome" required><br>
+        <input type="text" id="telefone" placeholder="Telefone" required><br>
+        <input type="email" id="email" placeholder="Email" required><br>
+        <input type="text" id="endereco" placeholder="Endereço" required><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <p id="msgCliente"></p>
 
-    <h3>Pedidos (Banho e Tosa)</h3>
-    <div id="pedidos">
-        <div class="pedido">
-            <input type="text" name="servico[]" placeholder="Serviço (Banho, Tosa...)" required>
-            <textarea name="observacoes[]" placeholder="Observações"></textarea>
-        </div>
-    </div>
-    <button type="button" onclick="addPedido()">Adicionar Pedido</button>
+    <h2>Cadastrar Pedido</h2>
+    <form id="formPedido">
+        <input type="number" id="cliente_id" placeholder="ID do Cliente" required><br>
+        <input type="text" id="servico" placeholder="Serviço" required><br>
+        <input type="date" id="data_pedido" required><br>
+        <input type="text" id="observacoes" placeholder="Observações"><br>
+        <button type="submit">Cadastrar Pedido</button>
+    </form>
+    <p id="msgPedido"></p>
 
-    <br>
-    <button type="submit">Cadastrar Cliente</button>
-</form>
+    <script>
+        document.getElementById("formCliente").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            fetch("http:///novaagro.totalh.net/clientes.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("msgCliente").textContent = data.success || data.error;
+            })
+            .catch(error => console.error("Erro:", error));
+        });
 
-<script>
-function addPedido() {
-    let container = document.getElementById('pedidos');
-    let div = document.createElement('div');
-    div.className = 'pedido';
-    div.innerHTML = `
-        <input type="text" name="servico[]" placeholder="Serviço (Banho, Tosa...)" required>
-        <textarea name="observacoes[]" placeholder="Observações"></textarea>
-    `;
-    container.appendChild(div);
-}
-</script>
+        document.getElementById("formPedido").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            fetch("http:///novaagro.totalh.net/pedidos.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("msgPedido").textContent = data.success || data.error;
+            })
+            .catch(error => console.error("Erro:", error));
+        });
+    </script>
 </body>
 </html>
